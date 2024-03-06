@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    
+    typedef enum { END, ADD, SUB, MUL, DIV } choice_t;
+    while (true) {
+        cout << "Enter first operand: ";
+        float op1; 
+        cin >> op1;
+        cout << "Enter second operand: ";
+        float op2; 
+        cin >> op2;
+        std::cout <<
+            "Choices:\n"
+            "   Enter " << ADD << " to add\n"
+            "   Enter " << SUB << " to subtract\n"
+            "   Enter " << MUL << " to multiply\n"
+            "   Enter " << DIV << " to divide\n"
+            "   Enter " << END << " to exit\n"
+            "Enter your choice: ";
+        choice_t choice = (choice_t) ({ int ch; cin >> ch; ch; });
+        float res = 0;
+        switch (choice) {
+            case ADD: res = op1 + op2; break;
+            case SUB: res = op1 - op2; break;
+            case MUL: res = op1 * op2; break;
+            case DIV: res = op1 / op2; break;
+            case END: exit(0);
+            default:
+                cout << "Invalid input, retry\n";
+        }
+        std::cout << "Result = " << res << std::endl;
+    }
+    return 0;
+}
